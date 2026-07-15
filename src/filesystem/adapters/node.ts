@@ -19,7 +19,8 @@ export default class Node implements FileSystemAdapter {
       return new Uint8Array(buffer);
     } catch (error) {
       throw new ServerError(
-        `Failed to read file: ${error instanceof Error ? error.message : "Unknown error"
+        `Failed to read file: ${
+          error instanceof Error ? error.message : "Unknown error"
         }`,
       );
     }
@@ -40,7 +41,8 @@ export default class Node implements FileSystemAdapter {
       return await readFile(filePath, "utf-8");
     } catch (error) {
       throw new ServerError(
-        `Failed to read file: ${error instanceof Error ? error.message : "Unknown error"
+        `Failed to read file: ${
+          error instanceof Error ? error.message : "Unknown error"
         }`,
       );
     }
