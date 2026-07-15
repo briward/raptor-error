@@ -1,4 +1,5 @@
 import { ServerError } from "@raptor/kernel";
+import { readFileSync as fsReadFileSync } from "node:fs";
 
 import type { FileSystemAdapter } from "../../interfaces/file-system-adapter.ts";
 
@@ -11,17 +12,14 @@ export default class Node implements FileSystemAdapter {
    */
   public readFileSync(path: string | URL): Uint8Array<ArrayBuffer> {
     try {
-      const fs = require("node:fs");
-
       const filePath = path instanceof URL ? path.pathname : path;
 
-      const buffer = fs.readFileSync(filePath);
+      const buffer = fsReadFileSync(filePath);
 
       return new Uint8Array(buffer);
     } catch (error) {
       throw new ServerError(
-        `Failed to read file: ${
-          error instanceof Error ? error.message : "Unknown error"
+        `Failed to read file: ${error instanceof Error ? error.message : "Unknown error"
         }`,
       );
     }
@@ -42,8 +40,7 @@ export default class Node implements FileSystemAdapter {
       return await readFile(filePath, "utf-8");
     } catch (error) {
       throw new ServerError(
-        `Failed to read file: ${
-          error instanceof Error ? error.message : "Unknown error"
+        `Failed to read file: ${error instanceof Error ? error.message : "Unknown error"
         }`,
       );
     }

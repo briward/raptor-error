@@ -16,7 +16,10 @@
   },
   "jsr": {
     "@raptor/kernel@0.25.0": {
-      "integrity": "5fc9a3b4883a2bd2c9d456281655c051cbc4ca95345164ea7eb2107c15c74334"
+      "integrity": "5fc9a3b4883a2bd2c9d456281655c051cbc4ca95345164ea7eb2107c15c74334",
+      "dependencies": [
+        "jsr:@raptor/types"
+      ]
     },
     "@raptor/types@0.1.1": {
       "integrity": "8a6089e859141415b45ceddbd2055e02faac74f63e1d2f630d5f9ca4089df350"
